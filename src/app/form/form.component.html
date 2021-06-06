@@ -1,0 +1,100 @@
+
+<form [formGroup]="regForm"  class="form-group container border border-success bg-light w-50 m-4">
+  <div class="row">
+    <div class="col-5">
+      <div >
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control"  formControlName="name" id="name" required/>
+        <div *ngIf="_name.errors?.required && (_name.touched || _name.dirty)">
+          <span class="badge bg-danger " >*Обязательное поле</span>
+       </div>
+        <div *ngIf="_name.errors?.pattern && (_name.touched || _name.dirty)">
+          <span  class="badge bg-danger ">*Запрещены спецсимволы и цифры</span>
+       </div>
+      </div>
+      <div >
+        <label for="lastName" class="form-label">lastName</label>
+        <input type="text" class="form-control"  formControlName="lastname" id="lastName" />
+        <div *ngIf="_lastname.errors?.required && (_lastname.touched || _lastname.dirty)">
+          <span class="badge bg-danger " >*Обязательное поле</span>
+        </div>
+        <div *ngIf="_lastname.errors?.pattern && (_lastname.touched || _lastname.dirty)">
+          <span  class="badge bg-danger ">*Запрещены спецсимволы и цифры</span>
+        </div>
+      </div>
+      <div >
+        <label for="login" class="form-label">login</label>
+        <input type="text" class="form-control"  formControlName="login" id="login" />
+        <div *ngIf="_login.errors?.pattern && (_login.touched || _login.dirty)">
+          <span  class="badge bg-danger ">*Запрещены спецсимволы</span>
+        </div>
+        <div *ngIf="_login.errors?.max && (_login.touched || _login.dirty)">
+          <span  class="badge bg-danger ">*длина не более 10 знаков</span>
+        </div>
+        <div *ngIf="_login.errors?.required && (_login.touched || _login.dirty)">
+          <span  class="badge bg-danger ">*Обязательное поле</span>
+        </div>
+
+      </div>
+      <div  >
+        <label for="password" class="form-label">password</label>
+        <input type="password"  class="form-control" formControlName="password" id="password"  />
+        <div *ngIf="_password.errors?.required && (_password.touched || _password.dirty)">
+          <span  class="badge bg-danger ">*Обязательное поле</span>
+        </div>
+        <div *ngIf="_password.errors?.max && (_password.touched || _password.dirty)">
+          <span  class="badge bg-danger ">*длина не более 24 символа </span>
+        </div><div *ngIf="_password.errors?.min && (_password.touched || _password.dirty)">
+        <span  class="badge bg-danger ">*длина не менее 8 символов</span>
+      </div>
+      </div>
+      <div >
+        <label for="email" class="form-label">email</label>
+        <input type="email" class="form-control"  formControlName="email" id="email"  />
+        <div *ngIf="_email.errors?.required && (_email.touched || _email.dirty)">
+          <span  class="badge bg-danger ">*Обязательное поле </span>
+        </div>
+        <div *ngIf="_email.errors?.email && (_email.touched || _email.dirty)">
+          <span  class="badge bg-danger ">*Некорректно введен email </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div >
+        <label for="country" class="form-label">country</label>
+        <input type="text"  class="form-control" formControlName="country" id="country" />
+        <div *ngIf="_country.errors?.required && (_country.touched || _country.dirty)">
+          <span  class="badge bg-danger ">*Обязательное поле </span>
+        </div>
+        <div *ngIf="_country.errors?.pattern && (_country.touched || _country.dirty)">
+          <span  class="badge bg-danger ">*Запрещены спецсимволы и цифры</span>
+        </div>
+      </div>
+      <div >
+        <label for="phone" class="form-label">phone</label>
+        <input type="text" class="form-control"  formControlName="phone" id="phone"  />
+        <div *ngIf="_phone.errors?.required && (_phone.touched || _phone.dirty)">
+          <span  class="badge bg-danger ">*Обязательное поле </span>
+        </div>
+        <div *ngIf="_phone.errors?.pattern && (_phone.touched || _phone.dirty)">
+          <span  class="badge bg-danger ">*Введите номер телефона в формате +38хххххххххх </span>
+        </div>
+      </div>
+      <div class="m-4">
+        <input type="radio" value="male" formControlName="gender"> Male
+        <input type="radio" value="female" formControlName="gender"> Female
+        <div *ngIf="_gender.errors?.required && (_phone.touched || _phone.dirty)">
+          <span  class="badge bg-danger ">*Обязательное поле </span>
+        </div>
+      </div>
+      <div >
+        <label for="birthDate" class="form-label">Дата рождения</label>
+        <input type="date"  class="form-control" formControlName="birthDate" id="birthDate" />
+        <div *ngIf="_date.errors?.required && (_date.touched || _date.dirty)">
+          <span  class="badge bg-danger ">*Обязательное поле </span>
+        </div>
+      </div>
+      <button (click)="submitForm()" [disabled]="regForm.invalid" class="btn btn-outline-secondary m-4 w-25">Submit</button>
+    </div>
+  </div>
+</form>
